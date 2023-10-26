@@ -1,14 +1,16 @@
 import json
-import random
-import os
-from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, ConversationHandler, filters
-from functools import partial
-from telegram import ReplyKeyboardMarkup, Update
-from redis_interaction import connection, write_in, answer_checker, PORT, HOST, PASSWORD
-from enum import Enum, auto
 import logging
+import os
+import random
+from enum import Enum, auto
+from functools import partial
 from logging.handlers import TimedRotatingFileHandler
+
+from telegram import ReplyKeyboardMarkup
+from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, ConversationHandler, filters
+
 from logger import TelegramLogsHandler, logger_bot
+from redis_interaction import connection, write_in, answer_checker, PORT, HOST, PASSWORD
 
 TG_TOKEN = os.environ['TG_TOKEN']
 QUIZ_FILE = os.environ['QUIZ_FILE']

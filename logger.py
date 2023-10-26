@@ -1,8 +1,8 @@
-import logging
 import asyncio
+import logging
 import os
-from telegram.ext import Application
 
+from telegram.ext import Application
 
 TG_CHAT_ID = os.environ['TG_CHAT_ID']
 TG_LOGGER_TOKEN = os.environ['TG_LOGGER_TOKEN']

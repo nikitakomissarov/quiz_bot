@@ -1,12 +1,14 @@
-import random
-import logging
-from logging.handlers import TimedRotatingFileHandler
 import json
-import vk_api
-from vk_api.longpoll import VkLongPoll, VkEventType
+import logging
 import os
-from logger import TelegramLogsHandler, logger_bot
+import random
+from logging.handlers import TimedRotatingFileHandler
+
+import vk_api
 from vk_api.keyboard import VkKeyboard, VkKeyboardColor
+from vk_api.longpoll import VkLongPoll, VkEventType
+
+from logger import TelegramLogsHandler, logger_bot
 from redis_interaction import connection, write_in, answer_checker, PORT, HOST, PASSWORD
 
 VK_TOKEN = os.environ['VK_TOKEN']

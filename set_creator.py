@@ -1,6 +1,5 @@
-import time
-import re
 import json
+import re
 
 quiz = dict()
 
@@ -14,7 +13,6 @@ for number in range(1, 4):
         answer_text = [a.replace('\n', ' ') for a in answer_text]
         next_quiz = {key: value for key, value in zip(question_text, answer_text)}
         quiz.update(next_quiz)
-
 
 with open('quiz_file.json', 'w', encoding='utf-8') as f:
     json.dump(quiz, f, ensure_ascii=False, indent=4)
