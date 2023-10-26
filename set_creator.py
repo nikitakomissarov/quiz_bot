@@ -2,7 +2,6 @@ import time
 import re
 import json
 
-
 quiz = dict()
 
 for number in range(1, 4):
@@ -19,6 +18,3 @@ for number in range(1, 4):
 
 with open('quiz_file.json', 'w', encoding='utf-8') as f:
     json.dump(quiz, f, ensure_ascii=False, indent=4)
-
-
-print(quiz)
