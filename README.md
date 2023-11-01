@@ -1,10 +1,10 @@
-## Tg_bot ##
+![Telegram_kpTvqaE1Yc](https://github.com/nikitakomissarov/quiz_bot/assets/59535117/b7833584-6b8d-439e-840e-749719b19fdb)## Tg_bot ##
 
 Это бот для проведения викторин. Подробно останавливаться на интерфейсе не вижу смысла, потому что тут всё очевидно. 
 
 https://t.me/quzzz_bot
 
-![Uploading Telegram_kpTvqaE1Yc.gif…]()
+![Telegram_kpTvqaE1Yc](https://github.com/nikitakomissarov/quiz_bot/assets/59535117/be29cc2b-a9a3-41c1-a188-e579377890a9)
 
 
 В этом же проекте есть logger — бот, который подхватывает ошибки (если они возникнут) и отправляет их в Телеграме тому пользователю, чей id будет указан в качестве id для отправки сообщений. 
