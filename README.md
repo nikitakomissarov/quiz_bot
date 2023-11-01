@@ -1,4 +1,4 @@
-![Telegram_kpTvqaE1Yc](https://github.com/nikitakomissarov/quiz_bot/assets/59535117/b7833584-6b8d-439e-840e-749719b19fdb)## Tg_bot ##
+## Tg_bot ##
 
 Это бот для проведения викторин. Подробно останавливаться на интерфейсе не вижу смысла, потому что тут всё очевидно. 
 
