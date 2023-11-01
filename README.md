@@ -4,7 +4,8 @@
 
 https://t.me/quzzz_bot
 
-![image](https://github.com/nikitakomissarov/quiz_bot/assets/59535117/aec66fdb-9d36-4d35-85b7-80cd5a4d2ae8)
+![Uploading Telegram_kpTvqaE1Yc.gif…]()
+
 
 В этом же проекте есть logger — бот, который подхватывает ошибки (если они возникнут) и отправляет их в Телеграме тому пользователю, чей id будет указан в качестве id для отправки сообщений. 
 
