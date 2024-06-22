@@ -43,3 +43,14 @@ https://vk.com/club219472973
 6. Наконец, запускаем:
 ```
 (env) C:\Users\big shot\bots>python vk_bot.py
+
+## Set_creator ##
+Этот скрипт создает сет quiz_file.json вопросов из пресетов для использования в упомянутых выше ботах. 
+
+Чтобы начать им пользоваться, необходимо при запуске кода указать путь к папке, где у вас лежат пресеты, которые нужно обработать. 
+
+Запуск:
+```
+(env) C:\Users\big shot\bots>python set_creator.py -f C:\Users\user\Documents\GitHub\quiz_bot\quiz_files
+
+
