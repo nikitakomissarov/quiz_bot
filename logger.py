@@ -1,6 +1,7 @@
 import asyncio
 import logging
 
+
 class TelegramLogsHandler(logging.Handler):
 
     def __init__(self, bot_logger, tg_chat_id):
