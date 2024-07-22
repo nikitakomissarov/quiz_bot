@@ -1,18 +1,25 @@
-from dotenv import load_dotenv
-import os
 from fuzzywuzzy import fuzz
 
-load_dotenv()
+from config import settings
 
-PORT = os.environ['PORT']
-HOST = os.environ['HOST']
-PASSWORD = os.environ['PASSWORD']
+PORT = settings['PORT']
+HOST = settings['HOST']
+PASSWORD = settings['PASSWORD']
 
-def check_answer(quiz, redis_gate, user_id, user_answer):
+
+def retrive_question(redis_gate, user_id):
     user_question = redis_gate.get(user_id)
     if user_question is None:
         result = 'Вопрос не найден'
-        return result
+    else:
+        result = user_question
+    return result
+
+
+def check_answer(quiz, redis_gate, user_id, user_answer):
+    user_question = retrive_question(redis_gate, user_id)
+    if user_question == 'Вопрос не найден':
+        return user_question
     else:
         correct_solution = quiz.get(user_question.decode('utf-8'))
         ration = fuzz.ratio(correct_solution.lower(), user_answer.lower())
