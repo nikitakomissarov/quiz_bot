@@ -1,9 +1,11 @@
-import json
-import re
 import argparse
+import json
 import os
+import re
 
-DEFAULT_QUIZ_FOLDER_PATH = os.path.abspath('quiz_files')
+from config import settings
+
+DEFAULT_QUIZ_FOLDER_PATH = settings['DEFAULT_QUIZ_FOLDER_PATH']
 
 
 def main():
@@ -24,7 +26,7 @@ def main():
         answer_text = re.findall(r'Ответ:\s*(.*)', quiz_set)
         question_text = [q.replace('\n', ' ') for q in question_text]
         answer_text = [a.replace('\n', ' ') for a in answer_text]
-        next_quiz = {key: value for key, value in zip(question_text, answer_text)}
+        next_quiz = {new_question: new_answer for new_question, new_answer in zip(question_text, answer_text)}
         quiz.update(next_quiz)
 
     with open('quiz_file.json', 'w', encoding='utf-8') as f:
