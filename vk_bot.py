@@ -11,7 +11,7 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 
 from config import settings
 from logger import TelegramLogsHandler
-from redis_interaction import check_answer, PORT, HOST, PASSWORD
+from redis_interaction import check_answer, PORT, HOST, PASSWORD, retrive_question
 
 VK_TOKEN = settings['VK_TOKEN']
 QUIZ_FILE = settings['QUIZ_FILE']
@@ -34,10 +34,11 @@ def handle_new_question_request(vk,
     return question_text, correct_solution
 
 
-def handle_solution_attempt(quiz, redis_gate, user_id, text, vk, keyboard):
+def handle_solution_attempt(quiz, redis_gate, user_id, text, vk, keyboard, user_question=None):
     user_id = user_id
     user_answer = text
-    result = check_answer(quiz, redis_gate, user_id, user_answer)
+    user_question = retrive_question(redis_gate, user_id)
+    result = user_question if user_question == 'Вопрос не найден' else check_answer(quiz, user_answer, user_question)
     reply(user_id, vk, result, keyboard)
 
 
