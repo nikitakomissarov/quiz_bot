@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 
-def load_settings():
+def main():
     load_dotenv()
     settings = {
         'TG_TOKEN': os.environ['TG_TOKEN'],
@@ -19,4 +19,4 @@ def load_settings():
     return settings
 
 
-settings = load_settings()
+settings = main()
