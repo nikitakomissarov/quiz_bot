@@ -11,7 +11,7 @@ from telegram.ext import Application, CommandHandler, MessageHandler, ContextTyp
 
 from config import settings
 from logger import TelegramLogsHandler
-from redis_interaction import check_answer, PORT, HOST, PASSWORD
+from redis_interaction import check_answer, PORT, HOST, PASSWORD, retrive_question
 
 TG_TOKEN = settings['TG_TOKEN']
 QUIZ_FILE = settings['QUIZ_FILE']
@@ -56,8 +56,9 @@ async def handle_new_question_request(quiz, redis_gate, update, context: Context
 
 async def handle_solution_attempt(quiz, redis_gate, update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.chat.id
-    answer = update.message.text
-    reply = check_answer(quiz, redis_gate, user_id, answer)
+    user_answer = update.message.text
+    user_question = retrive_question(redis_gate, user_id)
+    reply = user_question if user_question == 'Вопрос не найден' else check_answer(quiz, user_answer, user_question)
     await update.message.reply_text(reply, reply_markup=MARKUP)
 
 
