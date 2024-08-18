@@ -13,11 +13,6 @@ from config import settings
 from logger import TelegramLogsHandler
 from redis_interaction import check_answer, PORT, HOST, PASSWORD, retrive_question
 
-TG_TOKEN = settings['TG_TOKEN']
-QUIZ_FILE = settings['QUIZ_FILE']
-TG_CHAT_ID = settings['TG_CHAT_ID']
-TG_LOGGER_TOKEN = settings['TG_LOGGER_TOKEN']
-
 REPLY_KEYBOARD = [["Новый вопрос", "Сдаться", "Мой счёт"]]
 MARKUP = ReplyKeyboardMarkup(REPLY_KEYBOARD,
                              one_time_keyboard=False,
@@ -68,6 +63,13 @@ async def give_up(quiz, redis_gate, update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
+    global TG_TOKEN, QUIZ_FILE, TG_CHAT_ID, TG_LOGGER_TOKEN
+
+    TG_TOKEN = settings['TG_TOKEN']
+    QUIZ_FILE = settings['QUIZ_FILE']
+    TG_CHAT_ID = settings['TG_CHAT_ID']
+    TG_LOGGER_TOKEN = settings['TG_LOGGER_TOKEN']
+
     logger_bot = Bot(token=TG_LOGGER_TOKEN)
 
     handler = TimedRotatingFileHandler("app.log",
@@ -92,7 +94,6 @@ def main():
             host=HOST,
             port=PORT,
             password=PASSWORD)
-
         conv_handler = ConversationHandler(
             entry_points=[CommandHandler('start', start)],
             states={
