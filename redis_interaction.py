@@ -1,11 +1,5 @@
 from fuzzywuzzy import fuzz
 
-from config import settings
-
-PORT = settings['PORT']
-HOST = settings['HOST']
-PASSWORD = settings['PASSWORD']
-
 
 def retrive_question(redis_gate, user_id):
     user_question = redis_gate.get(user_id)
