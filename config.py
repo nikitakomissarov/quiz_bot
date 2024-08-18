@@ -19,4 +19,4 @@ def load_settings():
     return settings
 
 
-settings = load_settings()
+load_settings()
