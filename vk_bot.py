@@ -9,9 +9,9 @@ from telegram import Bot
 from vk_api.keyboard import VkKeyboard, VkKeyboardColor
 from vk_api.longpoll import VkLongPoll, VkEventType
 
-from config import settings
+from config import load_settings
 from logger import TelegramLogsHandler
-from redis_interaction import check_answer, PORT, HOST, PASSWORD, retrive_question
+from redis_interaction import check_answer, retrive_question
 
 logger_info = logging.getLogger('loggerinfo')
 logger_error = logging.getLogger("loggererror")
@@ -69,12 +69,18 @@ def handle_vk_events(longpoll, vk, quiz, redis_gate, keyboard):
 
 
 def main():
-    global VK_TOKEN, QUIZ_FILE, TG_CHAT_ID, TG_LOGGER_TOKEN
+    settings = load_settings()
+
+    global VK_TOKEN, QUIZ_FILE, TG_CHAT_ID, TG_LOGGER_TOKEN, PORT, HOST, PASSWORD
 
     VK_TOKEN = settings['VK_TOKEN']
     QUIZ_FILE = settings['QUIZ_FILE']
     TG_CHAT_ID = settings['TG_CHAT_ID']
     TG_LOGGER_TOKEN = settings['TG_LOGGER_TOKEN']
+
+    PORT = settings['PORT']
+    HOST = settings['HOST']
+    PASSWORD = settings['PASSWORD']
 
     logger_bot = Bot(token=TG_LOGGER_TOKEN)
 

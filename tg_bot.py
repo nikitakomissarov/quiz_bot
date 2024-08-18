@@ -9,9 +9,9 @@ import redis
 from telegram import ReplyKeyboardMarkup, Bot
 from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, ConversationHandler, filters
 
-from config import settings
+from config import load_settings
 from logger import TelegramLogsHandler
-from redis_interaction import check_answer, PORT, HOST, PASSWORD, retrive_question
+from redis_interaction import check_answer, retrive_question
 
 REPLY_KEYBOARD = [["Новый вопрос", "Сдаться", "Мой счёт"]]
 MARKUP = ReplyKeyboardMarkup(REPLY_KEYBOARD,
@@ -63,12 +63,18 @@ async def give_up(quiz, redis_gate, update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    global TG_TOKEN, QUIZ_FILE, TG_CHAT_ID, TG_LOGGER_TOKEN
+    settings = load_settings()
+
+    global TG_TOKEN, QUIZ_FILE, TG_CHAT_ID, TG_LOGGER_TOKEN, PORT, HOST, PASSWORD
 
     TG_TOKEN = settings['TG_TOKEN']
     QUIZ_FILE = settings['QUIZ_FILE']
     TG_CHAT_ID = settings['TG_CHAT_ID']
     TG_LOGGER_TOKEN = settings['TG_LOGGER_TOKEN']
+
+    PORT = settings['PORT']
+    HOST = settings['HOST']
+    PASSWORD = settings['PASSWORD']
 
     logger_bot = Bot(token=TG_LOGGER_TOKEN)
 

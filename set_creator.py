@@ -3,10 +3,12 @@ import json
 import os
 import re
 
-from config import settings
+from config import load_settings
 
 
 def main():
+    settings = load_settings()
+
     DEFAULT_QUIZ_FOLDER_PATH = settings['DEFAULT_QUIZ_FOLDER_PATH']
 
     parser = argparse.ArgumentParser(
