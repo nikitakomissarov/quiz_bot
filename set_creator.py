@@ -5,10 +5,10 @@ import re
 
 from config import settings
 
-DEFAULT_QUIZ_FOLDER_PATH = settings['DEFAULT_QUIZ_FOLDER_PATH']
-
 
 def main():
+    DEFAULT_QUIZ_FOLDER_PATH = settings['DEFAULT_QUIZ_FOLDER_PATH']
+
     parser = argparse.ArgumentParser(
         description='Программам создает сет вопросов для бота-викторины'
     )
