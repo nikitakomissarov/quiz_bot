@@ -65,8 +65,6 @@ async def give_up(quiz, redis_gate, update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     settings = load_settings()
 
-    global TG_TOKEN, QUIZ_FILE, TG_CHAT_ID, TG_LOGGER_TOKEN, PORT, HOST, PASSWORD
-
     TG_TOKEN = settings['TG_TOKEN']
     QUIZ_FILE = settings['QUIZ_FILE']
     TG_CHAT_ID = settings['TG_CHAT_ID']
