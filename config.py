@@ -17,6 +17,3 @@ def load_settings():
         'DEFAULT_QUIZ_FOLDER_PATH': os.path.abspath('quiz_files')
     }
     return settings
-
-
-load_settings()
